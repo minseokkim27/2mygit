@@ -30,35 +30,42 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_lineEdit_textEdited(const QString &arg1)
 {
-    
+
 }
 
 void MainWindow::on_pushButton_Add_clicked()
 {
-    
+    Address address6("Hwang", "M", "010-2929-2929", "5st, Incheon, Korea");
+    m_phonebook.addAddress(address6);
 }
 
 void MainWindow::on_pushButton_Delete_clicked()
 {
-    
+    ui->textEdit_mainWindow->setText("<주소록 삭제>\n\n 삭제하실 주소록 이름을 적고 'Delete Enter'를 눌러주세요 \n");
+}
+
+void MainWindow::on_pushButton_Delete_Enter_clicked()
+{
+    QString searchName = ui->lineEdit->text().trimmed();
+    std::string str = m_phonebook.DeleteAddressBook(searchName.toStdString());
+    ui->textEdit_mainWindow->setText(QString::fromStdString(str));
 }
 
 void MainWindow::on_pushButton_Search_clicked()
 {
-    //m_phonebook.SearchAddressBook(searchName.toStdString());
-    //ui->textEdit_mainWindow->setText(m_phonebook.SearchAddressBook().data());
-    QString searchName = ui->lineEdit->text().trimmed(); 
-    //m_phonebook.searchAddress(searchName.toStdString());
-    //ui->textEdit_mainWindow->setText(m_phonebook.searchAddress(QString::fromStdString(searchName)));
+    ui->textEdit_mainWindow->setText("<주소록 검색>\n\n 검색하실 주소록 이름을 적고 'Search Enter'를 눌러주세요. \n");
+    //connect(this->lineEdit, SIGNAL(returnPressd()), this->on_pushButton_Search_Enter_clicked, SIGNAL(clicked()));
+    //returnPress를 더 알아볼 것, 해당 기능을 이용해야 add나 fix를 실행할 수 있을 듯함
+}
+
+void MainWindow::on_pushButton_Search_Enter_clicked()
+{
+    QString searchName = ui->lineEdit->text().trimmed();
     std::string str = m_phonebook.SearchAddressBook(searchName.toStdString());
     ui->textEdit_mainWindow->setText(QString::fromStdString(str));
 }
+
 void MainWindow::on_pushButton_Fix_clicked()
-{
-
-}
-
-void MainWindow::on_pushButton_SaveLoad_clicked()
 {
 
 }
@@ -74,7 +81,7 @@ void MainWindow::on_pushButton_CleanUp_clicked()
 }
 
 void MainWindow::on_pushButton_enter_clicked()
-{    
+{
     std::string str = ui->textEdit_mainWindow->toPlainText().toStdString();
     str += ui->lineEdit->text().toStdString()+ "\n";
     ui->textEdit_mainWindow->setText(str.data());
