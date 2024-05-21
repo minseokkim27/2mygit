@@ -1,9 +1,10 @@
+#include <iostream>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "address_factor.h"
 #include "addressbook_func.h"
-#include <iostream>
 #include "add_newwindow.h"
+#include "fix_newwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -36,10 +37,18 @@ void MainWindow::on_lineEdit_textEdited(const QString &arg1)
 
 }
 
+
+//exec 와 show() 차이에 대해서 공부하기
 void MainWindow::on_pushButton_Add_clicked()
 {
-    mAdd_newWindow = new Add_newWindow(this); 
-    mAdd_newWindow->show();
+    Add_newWindow *addWindow = new Add_newWindow(m_phonebook, this);
+    connect(addWindow, &Add_newWindow::addressAdded, this, &MainWindow::text_AddressAdded);
+    addWindow->exec();
+
+    /*mAdd_newWindow.m_name;
+    mAdd_newWindow.m_sex;
+    mAdd_newWindow.m_number;
+    mAdd_newWindow.m_address;*/
 }
 
 void MainWindow::on_pushButton_Delete_clicked()
@@ -57,7 +66,6 @@ void MainWindow::on_pushButton_Delete_Enter_clicked()
 void MainWindow::on_pushButton_Search_clicked()
 {
     ui->textEdit_mainWindow->setText("<주소록 검색>\n\n 검색하실 주소록 이름을 적고 'Search Enter'를 눌러주세요. \n");
-    //returnPress를 더 알아볼 것, 해당 기능을 이용해야 add나 fix를 실행할 수 있을 듯함
 }
 
 void MainWindow::on_pushButton_Search_Enter_clicked()
@@ -69,7 +77,8 @@ void MainWindow::on_pushButton_Search_Enter_clicked()
 
 void MainWindow::on_pushButton_Fix_clicked()
 {
-
+    Fix_newWindow mFix_newWindow;
+    mFix_newWindow.exec();
 }
 
 void MainWindow::on_pushButton_show_clicked()
@@ -87,4 +96,9 @@ void MainWindow::on_pushButton_enter_clicked()
     std::string str = ui->textEdit_mainWindow->toPlainText().toStdString();
     str += ui->lineEdit->text().toStdString()+ "\n";
     ui->textEdit_mainWindow->setText(str.data());
+}
+
+void MainWindow::text_AddressAdded()
+{
+    ui->textEdit_mainWindow->setText("주소가 추가되었습니다.");
 }

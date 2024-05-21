@@ -5,6 +5,7 @@
 #include "addressbook_func.h"
 #include "address_factor.h"
 #include "add_newwindow.h"
+#include "fix_newwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,9 +39,10 @@ private slots:
 
     void on_pushButton_enter_clicked();
 
+    void text_AddressAdded();
+
 private:
     Ui::MainWindow *ui;
     AddressBook m_phonebook;
-    Add_newWindow *mAdd_newWindow;
 };
 #endif // MAINWINDOW_H

@@ -7,6 +7,8 @@ AddressBook::AddressBook() : size(0){}
 
 void AddressBook::addAddress(const Address &newAddress)
 {
+    AddressBook m_phonebook;
+
     if (size < address_book_size)
     {
         list[size++] = newAddress;
@@ -16,6 +18,14 @@ void AddressBook::addAddress(const Address &newAddress)
     {
         std::cout << "주소록이 가득 찼습니다." << std::endl << std::endl;
     }
+}
+
+std::string AddressBook::addAddressBook_Name(const std::string &searchName)
+{
+    Address address;
+    address.setName(searchName);
+    
+    return "추가된 이름: " + searchName;
 }
 
 void AddressBook::deleteAddress(const std::string &searchName)
@@ -42,6 +52,33 @@ void AddressBook::deleteAddress(const std::string &searchName)
     {
         std::cout << searchName << "이(가) 주소록에 없습니다." << std::endl << std::endl;
     }
+}
+
+std::string AddressBook::DeleteAddressBook(const std::string &searchName)
+{
+    bool found = false;
+    std::string str;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (list[i].getName() == searchName)
+        {
+            for (int j = i; j < size - 1; j++)
+            {
+                list[j] = list[j + 1];
+            }
+            size--;
+            str = searchName + "을(를) 삭제했습니다.\n\n";
+            found = true;
+        }
+    }
+
+    if (!found)
+    {
+        str = searchName + "이(가) 주소록에 없습니다.\n\n";
+    }
+
+    return str;
 }
 
 void AddressBook::searchAddress(const std::string &searchName)

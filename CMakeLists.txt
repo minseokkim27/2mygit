@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
+
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(JSONCPP REQUIRED jsoncpp)
@@ -20,6 +21,7 @@ add_library(
   QT_address_lib SHARED
   address_factor.cpp
   addressbook_func.cpp)
+
 target_link_libraries(QT_address_lib ${JSONCPP_LIBRARIES})
 target_include_directories(QT_address_lib PUBLIC ${JSONCPP_INCLUDE_DIRS})
 
@@ -29,7 +31,13 @@ add_executable(
   mainwindow.cpp
   mainwindow.h
   mainwindow.ui
-  add_newwindow.cpp)
+  add_newwindow.h
+  add_newwindow.cpp
+  add_newwindow.ui
+  fix_newwindow.h
+  fix_newwindow.cpp
+  fix_newwindow.ui)
+  
 include_directories(QT_address_lib PUBLIC ${JSON_INCLUDE_DIRS})
 
 target_link_libraries(
