@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "addressbook_func.h"
 #include "address_factor.h"
+#include "add_newwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,6 +17,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    
 
 private slots:
     void on_lineEdit_textEdited(const QString &arg1);
@@ -39,5 +41,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     AddressBook m_phonebook;
+    Add_newWindow *mAdd_newWindow;
 };
 #endif // MAINWINDOW_H

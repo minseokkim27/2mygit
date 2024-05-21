@@ -3,12 +3,16 @@
 #include "address_factor.h"
 #include "addressbook_func.h"
 #include <iostream>
+#include "add_newwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this,  SLOT(on_pushButton_Search_Enter_clicked()));
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this,  SLOT(on_pushButton_Delete_Enter_clicked()));
+    
 
     Address address1("Son", "M", "010-7777-7777", "1st, London, England");
     Address address2("Ryu", "M", "010-9999-9999", "2st, LA, America");
@@ -27,7 +31,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_lineEdit_textEdited(const QString &arg1)
 {
 
@@ -35,8 +38,8 @@ void MainWindow::on_lineEdit_textEdited(const QString &arg1)
 
 void MainWindow::on_pushButton_Add_clicked()
 {
-    Address address6("Hwang", "M", "010-2929-2929", "5st, Incheon, Korea");
-    m_phonebook.addAddress(address6);
+    mAdd_newWindow = new Add_newWindow(this); 
+    mAdd_newWindow->show();
 }
 
 void MainWindow::on_pushButton_Delete_clicked()
@@ -54,7 +57,6 @@ void MainWindow::on_pushButton_Delete_Enter_clicked()
 void MainWindow::on_pushButton_Search_clicked()
 {
     ui->textEdit_mainWindow->setText("<주소록 검색>\n\n 검색하실 주소록 이름을 적고 'Search Enter'를 눌러주세요. \n");
-    //connect(this->lineEdit, SIGNAL(returnPressd()), this->on_pushButton_Search_Enter_clicked, SIGNAL(clicked()));
     //returnPress를 더 알아볼 것, 해당 기능을 이용해야 add나 fix를 실행할 수 있을 듯함
 }
 

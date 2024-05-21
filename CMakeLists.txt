@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(test_3 LANGUAGES CXX)
+project(QT_address LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -17,20 +17,21 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(JSONCPP REQUIRED jsoncpp)
 
 add_library(
-  test_3_lib SHARED
+  QT_address_lib SHARED
   address_factor.cpp
   addressbook_func.cpp)
-target_link_libraries(test_3_lib ${JSONCPP_LIBRARIES})
-target_include_directories(test_3_lib PUBLIC ${JSONCPP_INCLUDE_DIRS})
+target_link_libraries(QT_address_lib ${JSONCPP_LIBRARIES})
+target_include_directories(QT_address_lib PUBLIC ${JSONCPP_INCLUDE_DIRS})
 
 add_executable(
-  test_3
+  QT_address
   main.cpp
   mainwindow.cpp
   mainwindow.h
-  mainwindow.ui)
-include_directories(test_3_lib PUBLIC ${JSON_INCLUDE_DIRS})
+  mainwindow.ui
+  add_newwindow.cpp)
+include_directories(QT_address_lib PUBLIC ${JSON_INCLUDE_DIRS})
 
 target_link_libraries(
-  test_3 PRIVATE Qt5::Widgets
-  test_3_lib)
+  QT_address PRIVATE Qt5::Widgets
+  QT_address_lib)

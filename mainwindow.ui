@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1216</width>
-    <height>600</height>
+    <width>1234</width>
+    <height>620</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,125 +17,13 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="32" column="0">
-       <widget class="QPushButton" name="pushButton_enter">
-        <property name="text">
-         <string>Enter</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="label_Address_Fix">
-        <property name="text">
-         <string>Address Fix</string>
-        </property>
-       </widget>
+      <item row="0" column="1" rowspan="20" colspan="2">
+       <widget class="QTextEdit" name="textEdit_mainWindow"/>
       </item>
       <item row="11" column="0">
        <widget class="QLabel" name="label_Json_save">
         <property name="text">
          <string>Json Save</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_Address_Del">
-        <property name="text">
-         <string>Address Delete</string>
-        </property>
-       </widget>
-      </item>
-      <item row="14" column="0">
-       <widget class="QPushButton" name="pushButton_Load">
-        <property name="text">
-         <string>Load</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QPushButton" name="pushButton_Delete_Enter">
-        <property name="text">
-         <string>Delete Enter</string>
-        </property>
-       </widget>
-      </item>
-      <item row="17" column="0">
-       <widget class="QLabel" name="label_ViewClear">
-        <property name="text">
-         <string>ViewClear</string>
-        </property>
-       </widget>
-      </item>
-      <item row="18" column="0">
-       <widget class="QPushButton" name="pushButton_CleanUp">
-        <property name="text">
-         <string>CleanUp</string>
-        </property>
-       </widget>
-      </item>
-      <item row="32" column="1" colspan="2">
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item row="15" column="0">
-       <widget class="QLabel" name="label_AddressBook">
-        <property name="text">
-         <string>AddressBook</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QPushButton" name="pushButton_Delete">
-        <property name="text">
-         <string>Delete</string>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="0">
-       <widget class="QLabel" name="label_Json">
-        <property name="text">
-         <string>Json Load</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_Address_ser">
-        <property name="text">
-         <string>Address Search</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="0">
-       <widget class="QPushButton" name="pushButton_Fix">
-        <property name="text">
-         <string>Fix</string>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="0">
-       <widget class="QPushButton" name="pushButton_Save">
-        <property name="text">
-         <string>Save</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_Address_Add">
-        <property name="text">
-         <string>Address Add</string>
-        </property>
-       </widget>
-      </item>
-      <item row="16" column="0">
-       <widget class="QPushButton" name="pushButton_show">
-        <property name="text">
-         <string>show</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="pushButton_Add">
-        <property name="text">
-         <string>Add</string>
         </property>
        </widget>
       </item>
@@ -146,13 +34,125 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1" rowspan="20" colspan="2">
-       <widget class="QTextEdit" name="textEdit_mainWindow"/>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="pushButton_Add">
+        <property name="text">
+         <string>Add</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_Address_ser">
+        <property name="text">
+         <string>Address Search</string>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="0">
+       <widget class="QLabel" name="label_AddressBook">
+        <property name="text">
+         <string>AddressBook</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QPushButton" name="pushButton_Fix">
+        <property name="text">
+         <string>Fix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="32" column="1" colspan="2">
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_Address_Add">
+        <property name="text">
+         <string>Address Add</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QPushButton" name="pushButton_Save">
+        <property name="text">
+         <string>Save</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="0">
+       <widget class="QPushButton" name="pushButton_show">
+        <property name="text">
+         <string>show</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QPushButton" name="pushButton_Delete_Enter">
+        <property name="text">
+         <string>Delete Enter</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="label_Address_Fix">
+        <property name="text">
+         <string>Address Fix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="32" column="0">
+       <widget class="QPushButton" name="pushButton_enter">
+        <property name="text">
+         <string>Enter</string>
+        </property>
+       </widget>
+      </item>
+      <item row="17" column="0">
+       <widget class="QLabel" name="label_ViewClear">
+        <property name="text">
+         <string>ViewClear</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <widget class="QLabel" name="label_Json">
+        <property name="text">
+         <string>Json Load</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_Address_Del">
+        <property name="text">
+         <string>Address Delete</string>
+        </property>
+       </widget>
+      </item>
+      <item row="18" column="0">
+       <widget class="QPushButton" name="pushButton_CleanUp">
+        <property name="text">
+         <string>CleanUp</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QPushButton" name="pushButton_Delete">
+        <property name="text">
+         <string>Delete</string>
+        </property>
+       </widget>
       </item>
       <item row="7" column="0">
        <widget class="QPushButton" name="pushButton_Search">
         <property name="text">
          <string>Search</string>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="0">
+       <widget class="QPushButton" name="pushButton_Load">
+        <property name="text">
+         <string>Load</string>
         </property>
        </widget>
       </item>
@@ -166,7 +166,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1216</width>
+     <width>1234</width>
      <height>22</height>
     </rect>
    </property>
