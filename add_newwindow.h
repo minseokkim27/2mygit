@@ -24,7 +24,7 @@ private slots:
 
 private:
     Ui::Add_newWindow *ui;
-    AddressBook &m_addressBook;
+    AddressBook& m_addressBook;
 };
 
 #endif // ADD_NEWWINDOW_H

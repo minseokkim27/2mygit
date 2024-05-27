@@ -12,11 +12,11 @@ void AddressBook::addAddress(const Address &newAddress)
     if (size < address_book_size)
     {
         list[size++] = newAddress;
-        std::cout << "주소가 추가되었습니다." << std::endl << std::endl;
+        std::cout << "주소가 추가되었습니다." << std::endl;
     }
     else
     {
-        std::cout << "주소록이 가득 찼습니다." << std::endl << std::endl;
+        std::cout << "주소록이 가득 찼습니다." << std::endl;
     }
 }
 
@@ -26,32 +26,6 @@ std::string AddressBook::addAddressBook_Name(const std::string &searchName)
     address.setName(searchName);
     
     return "추가된 이름: " + searchName;
-}
-
-void AddressBook::deleteAddress(const std::string &searchName)
-{
-    bool found = false;
-
-    for (int i = 0; i < size; i++)
-    {
-        if (list[i].getName() == searchName)
-        {
-            for (int j = i; j < size - 1; j++)
-            {
-                list[j] = list[j + 1];
-            }
-            size--;
-            std::cout << searchName << "을(를) 삭제했습니다." << std::endl
-                      << std::endl;
-            found = true;
-            break;
-        }
-    }
-
-    if (!found)
-    {
-        std::cout << searchName << "이(가) 주소록에 없습니다." << std::endl << std::endl;
-    }
 }
 
 std::string AddressBook::DeleteAddressBook(const std::string &searchName)
@@ -81,30 +55,6 @@ std::string AddressBook::DeleteAddressBook(const std::string &searchName)
     return str;
 }
 
-void AddressBook::searchAddress(const std::string &searchName)
-{
-    bool found = false;
-
-    for (int i = 0; i < size; i++)
-    {
-        if (list[i].getName() == searchName)
-        {
-            std::cout << "<발견된 " << searchName << ">" << std::endl;
-            std::cout << "이름: " << list[i].getName() << std::endl;
-            std::cout << "성별: " << list[i].getSex() << std::endl;
-            std::cout << "전화번호: " << list[i].getNumber() << std::endl;
-            std::cout << "주소: " << list[i].getAddress() << std::endl << std::endl;
-            found = true;
-            break;
-        }
-    }
-
-    if (!found)
-    {
-        std::cout << searchName << "이(가) 주소록에 없습니다." << std::endl << std::endl;
-    }
-}
-
 std::string AddressBook::SearchAddressBook(const std::string &searchName)
 {
     bool found = false;
@@ -131,101 +81,21 @@ std::string AddressBook::SearchAddressBook(const std::string &searchName)
     return str;
 }
 
-void AddressBook::fixAddress(const std::string &searchName)
+std::string AddressBook::editAddressBook(const std::string &searchName, const std::string &newName, const std::string &newSex, const std::string &newNumber, const std::string &newAddress)
 {
-    bool found = false;
-
     for (int i = 0; i < size; i++)
     {
         if (list[i].getName() == searchName)
         {
-            int choice;
-
-            std::cout << "<수정하실 내용을 선택하세요>" << std::endl;
-            std::cout << "1. 이름" << std::endl;
-            std::cout << "2. 성별" << std::endl;
-            std::cout << "3. 전화번호" << std::endl;
-            std::cout << "4. 주소" << std::endl << std::endl;
-            std::cin >> choice;
-            found = true;
-
-            switch (choice)
-            {
-                case 1:
-                {
-                    std::cout << "<이름을 수정합니다>" << std::endl;
-                    std::cout << "새롭게 사용할 이름: ";
-                    std::string newName;
-                    std::cin >> newName;
-                    list[i].setName(newName);
-                    std::cout << newName << "(으)로 수정완료 되었습니다" << std::endl;
-                    std::cout << "<<변경된 주소록>>" << std::endl << std::endl;
-                    std::cout << "이름: " << list[i].getName() << std::endl;
-                    std::cout << "성별: " << list[i].getSex() << std::endl;
-                    std::cout << "전화번호: " << list[i].getNumber() << std::endl;
-                    std::cout << "주소: " << list[i].getAddress() << std::endl << std::endl;
-                break;
-                }
-
-                case 2:
-                {
-                    std::cout << "<성별을 수정합니다>" << std::endl;
-                    std::cout << "새롭게 사용할 성별: ";
-                    std::string newSex;
-                    std::cin >> newSex;
-                    list[i].setSex(newSex);
-                    std::cout << newSex << "(으)로 수정완료 되었습니다" << std::endl;
-                    std::cout << "<<변경된 주소록>>" << std::endl << std::endl;
-                    std::cout << "이름: " << list[i].getName() << std::endl;
-                    std::cout << "성별: " << list[i].getSex() << std::endl;
-                    std::cout << "전화번호: " << list[i].getNumber() << std::endl;
-                    std::cout << "주소: " << list[i].getAddress() << std::endl << std::endl;
-                break;
-                }
-
-                case 3:
-                {
-                    std::cout << "<전화번호을 수정합니다>" << std::endl;
-                    std::cout << "새롭게 사용할 전화번호: ";
-                    std::string newNumber;
-                    std::cin >> newNumber;
-                    list[i].setNumber(newNumber);
-                    std::cout << newNumber << "(으)로 수정완료 되었습니다" << std::endl;
-                    std::cout << "<<변경된 주소록>>" << std::endl << std::endl;
-                    std::cout << "이름: " << list[i].getName() << std::endl;
-                    std::cout << "성별: " << list[i].getSex() << std::endl;
-                    std::cout << "전화번호: " << list[i].getNumber() << std::endl;
-                    std::cout << "주소: " << list[i].getAddress() << std::endl << std::endl;
-                break;
-                }
-
-                case 4:
-                {
-                    std::cout << "<주소을 수정합니다>" << std::endl;
-                    std::cout << "새롭게 사용할 주소: ";
-                    std::string newAddress;
-                    std::cin >> newAddress;
-                    list[i].setAddress(newAddress);
-                    std::cout << newAddress << "(으)로 수정완료 되었습니다" << std::endl;
-                    std::cout << "<<변경된 주소록>>" << std::endl << std::endl;
-                    std::cout << "이름: " << list[i].getName() << std::endl;
-                    std::cout << "성별: " << list[i].getSex() << std::endl;
-                    std::cout << "전화번호: " << list[i].getNumber() << std::endl;
-                    std::cout << "주소: " << list[i].getAddress() << std::endl << std::endl;
-                break;
-                }
-
-                default:
-                    std::cout << "올바른 번호를 입력해주세요" << std::endl;
-                break;
-            }
+            list[i].setName(newName);
+            list[i].setSex(newSex);
+            list[i].setNumber(newNumber);
+            list[i].setAddress(newAddress);
+            return searchName + "의 정보가 수정되었습니다.\n이름: " + newName + "\n성별: " + newSex + "\n전화번호: " + newNumber + "\n주소: " + newAddress + "\n\n";
         }
     }
 
-    if (!found)
-    {
-        std::cout << searchName << "이(가) 주소록에 없습니다." << std::endl << std::endl;
-    }
+    return searchName + "이(가) 주소록에 없습니다.\n\n";
 }
 
 void AddressBook::saveToJson(const std::string &filename)
@@ -294,26 +164,6 @@ void AddressBook::loadFromJson(const std::string &filename)
     else
     {
         std::cout << "파일이 없거나 JSON 형식이 아닙니다." << std::endl << std::endl;
-    }
-}
-
-void AddressBook::printAddressBook()
-{
-
-    std::cout << "<현재 가지고 있는 주소록>" << std::endl << std::endl;
-    if (size == 0)
-    {
-        std::cout << "주소록에 주소가 없습니다." << std::endl << std::endl;
-    }
-    else
-    {
-        for (int i = 0; i < size; i++)
-        {
-            std::cout << "이름: " << list[i].getName() << std::endl;
-            std::cout << "성별: " << list[i].getSex() << std::endl;
-            std::cout << "전화번호: " << list[i].getNumber() << std::endl;
-            std::cout << "주소: " << list[i].getAddress() << std::endl;
-        }
     }
 }
 

@@ -1,15 +1,59 @@
 #include "fix_newwindow.h"
 #include "ui_fix_newwindow.h"
-#include "mainwindow.h"
 
-Fix_newWindow::Fix_newWindow(QWidget *parent) :
+Fix_newWindow::Fix_newWindow(AddressBook &phonebook, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Fix_newWindow)
+    ui(new Ui::Fix_newWindow),
+    m_phonebook(phonebook)
 {
     ui->setupUi(this);
+    connect(ui->lineEdit_SearchName, SIGNAL(returnPressd()), this, SLOT(on_pushButton_Enter_clicked()));
+    connect(ui->lineEdit_Address, SIGNAL(returnPressd()), this, SLOT(on_pushButton_Edit_clicked()));
+    ui->lineEdit->setText("수정을 원하는 사람의 이름을 최하단에 입력해주세요.");
 }
 
 Fix_newWindow::~Fix_newWindow()
 {
     delete ui;
 }
+
+void Fix_newWindow::on_pushButton_Edit_clicked()
+{
+    QString newName = ui->lineEdit_Name->text().trimmed();
+    QString newSex = ui->lineEdit_Sex->text().trimmed();
+    QString newNumber = ui->lineEdit_Num->text().trimmed();
+    QString newAddress = ui->lineEdit_Address->text().trimmed();
+
+    std::string result = m_phonebook.editAddressBook(currentSearchName.toStdString(), newName.toStdString(), newSex.toStdString(), newNumber.toStdString(), newAddress.toStdString());
+
+    emit addressEdited();
+    accept();
+}
+
+void Fix_newWindow::on_pushButton_Enter_clicked()
+{
+    QString searchName = ui->lineEdit_SearchName->text().trimmed();
+    std::string name, sex, number, address;
+    std::string result = m_phonebook.SearchAddressBook(searchName.toStdString());
+    
+    if (result.find("주소록에 없습니다.") == std::string::npos)
+    {
+        ui->lineEdit_Name->setText(QString::fromStdString(name));
+        ui->lineEdit_Sex->setText(QString::fromStdString(sex));
+        ui->lineEdit_Num->setText(QString::fromStdString(number));
+        ui->lineEdit_Address->setText(QString::fromStdString(address));
+        currentSearchName = searchName;
+        ui->lineEdit->setText("수정할 내용을 기입해주세요.");
+    } 
+    else
+    {
+        ui->lineEdit_Name->clear();
+        ui->lineEdit_Sex->clear();
+        ui->lineEdit_Num->clear();
+        ui->lineEdit_Address->clear();
+        currentSearchName.clear();
+    }
+    
+}
+
+

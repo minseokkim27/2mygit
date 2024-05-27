@@ -3,9 +3,6 @@
 
 #include <QMainWindow>
 #include "addressbook_func.h"
-#include "address_factor.h"
-#include "add_newwindow.h"
-#include "fix_newwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,31 +15,21 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    
 
 private slots:
     void on_lineEdit_textEdited(const QString &arg1);
-
     void on_pushButton_Add_clicked();
-
-    void on_pushButton_Delete_clicked();
-    void on_pushButton_Delete_Enter_clicked();
-
-    void on_pushButton_Search_clicked();
-    void on_pushButton_Search_Enter_clicked();
-
-    void on_pushButton_Fix_clicked();
-
-    void on_pushButton_show_clicked();
-
-    void on_pushButton_CleanUp_clicked();
-
-    void on_pushButton_enter_clicked();
-
     void text_AddressAdded();
+    void text_AddressEdited();
+    void on_pushButton_Delete_clicked();
+    void on_pushButton_Search_clicked();
+    void on_pushButton_Fix_clicked();
+    void on_pushButton_show_clicked();
+    void on_pushButton_CleanUp_clicked();
 
 private:
     Ui::MainWindow *ui;
     AddressBook m_phonebook;
 };
+
 #endif // MAINWINDOW_H

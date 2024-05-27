@@ -19,7 +19,8 @@ public:
     std::string DeleteAddressBook(const std::string &searchName);
     void searchAddress(const std::string& searchName);
     std::string SearchAddressBook(const std::string& searchName);
-    void fixAddress(const std::string& searchName);
+    void editAddress(const std::string& searchName);
+    std::string editAddressBook(const std::string &searchName, const std::string &newName, const std::string &newSex, const std::string &newNumber, const std::string &newAddress);
     void saveToJson(const std::string& filename);
     void loadFromJson(const std::string& filename);
     void printAddressBook();

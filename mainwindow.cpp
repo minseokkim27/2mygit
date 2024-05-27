@@ -1,4 +1,3 @@
-#include <iostream>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "address_factor.h"
@@ -11,9 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->lineEdit, SIGNAL(returnPressed()), this,  SLOT(on_pushButton_Search_Enter_clicked()));
-    connect(ui->lineEdit, SIGNAL(returnPressed()), this,  SLOT(on_pushButton_Delete_Enter_clicked()));
-    
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Delete_clicked()));
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Search_clicked()));
 
     Address address1("Son", "M", "010-7777-7777", "1st, London, England");
     Address address2("Ryu", "M", "010-9999-9999", "2st, LA, America");
@@ -34,51 +32,62 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_lineEdit_textEdited(const QString &arg1)
 {
-
 }
 
-
-//exec 와 show() 차이에 대해서 공부하기
 void MainWindow::on_pushButton_Add_clicked()
 {
     Add_newWindow *addWindow = new Add_newWindow(m_phonebook, this);
     connect(addWindow, &Add_newWindow::addressAdded, this, &MainWindow::text_AddressAdded);
     addWindow->exec();
+}
 
-    /*mAdd_newWindow.m_name;
-    mAdd_newWindow.m_sex;
-    mAdd_newWindow.m_number;
-    mAdd_newWindow.m_address;*/
+void MainWindow::text_AddressAdded()
+{
+    ui->textEdit_mainWindow->setText("주소가 추가되었습니다.");
+}
+
+void MainWindow::text_AddressEdited()
+{
+    ui->textEdit_mainWindow->setText("주소가 수정되었습니다.");
 }
 
 void MainWindow::on_pushButton_Delete_clicked()
 {
-    ui->textEdit_mainWindow->setText("<주소록 삭제>\n\n 삭제하실 주소록 이름을 적고 'Delete Enter'를 눌러주세요 \n");
-}
-
-void MainWindow::on_pushButton_Delete_Enter_clicked()
-{
     QString searchName = ui->lineEdit->text().trimmed();
-    std::string str = m_phonebook.DeleteAddressBook(searchName.toStdString());
-    ui->textEdit_mainWindow->setText(QString::fromStdString(str));
+
+    if (searchName.isEmpty())
+    {
+        ui->textEdit_mainWindow->setText("<주소록 삭제>\n\n 삭제하실 주소록 이름을 적고 'Delete'를 눌러주세요 \n");
+    }
+    else
+    {
+        std::string str = m_phonebook.DeleteAddressBook(searchName.toStdString());
+        ui->textEdit_mainWindow->setText(QString::fromStdString(str));
+    }
+    ui->textEdit_mainWindow->clear();
 }
 
 void MainWindow::on_pushButton_Search_clicked()
 {
-    ui->textEdit_mainWindow->setText("<주소록 검색>\n\n 검색하실 주소록 이름을 적고 'Search Enter'를 눌러주세요. \n");
-}
-
-void MainWindow::on_pushButton_Search_Enter_clicked()
-{
     QString searchName = ui->lineEdit->text().trimmed();
-    std::string str = m_phonebook.SearchAddressBook(searchName.toStdString());
-    ui->textEdit_mainWindow->setText(QString::fromStdString(str));
+
+    if (searchName.isEmpty())
+    {
+        ui->textEdit_mainWindow->setText("<주소록 검색>\n\n 검색하실 주소록 이름을 적고 'Enter'를 눌러주세요 \n");
+    }
+    else
+    {
+        std::string str = m_phonebook.SearchAddressBook(searchName.toStdString());
+        ui->textEdit_mainWindow->setText(QString::fromStdString(str));
+    }
+    ui->textEdit_mainWindow->clear();
 }
 
 void MainWindow::on_pushButton_Fix_clicked()
 {
-    Fix_newWindow mFix_newWindow;
-    mFix_newWindow.exec();
+    Fix_newWindow *fixWindow = new Fix_newWindow(m_phonebook, this);
+    connect(fixWindow, &Fix_newWindow::addressEdited, this, &MainWindow::text_AddressEdited);
+    fixWindow->exec();
 }
 
 void MainWindow::on_pushButton_show_clicked()
@@ -89,16 +98,4 @@ void MainWindow::on_pushButton_show_clicked()
 void MainWindow::on_pushButton_CleanUp_clicked()
 {
     ui->textEdit_mainWindow->setText("");
-}
-
-void MainWindow::on_pushButton_enter_clicked()
-{
-    std::string str = ui->textEdit_mainWindow->toPlainText().toStdString();
-    str += ui->lineEdit->text().toStdString()+ "\n";
-    ui->textEdit_mainWindow->setText(str.data());
-}
-
-void MainWindow::text_AddressAdded()
-{
-    ui->textEdit_mainWindow->setText("주소가 추가되었습니다.");
 }
