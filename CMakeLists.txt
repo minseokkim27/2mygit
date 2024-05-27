@@ -11,11 +11,11 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
-
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(JSONCPP REQUIRED jsoncpp)
+
+
 
 add_library(
   QT_address_lib SHARED
@@ -34,9 +34,9 @@ add_executable(
   add_newwindow.h
   add_newwindow.cpp
   add_newwindow.ui
-  fix_newwindow.h
-  fix_newwindow.cpp
-  fix_newwindow.ui)
+  edit_newwindow.h
+  edit_newwindow.cpp
+  edit_newwindow.ui)
   
 include_directories(QT_address_lib PUBLIC ${JSON_INCLUDE_DIRS})
 

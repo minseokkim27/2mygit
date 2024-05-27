@@ -5,19 +5,21 @@
 
 AddressBook::AddressBook() : size(0){}
 
-void AddressBook::addAddress(const Address &newAddress)
+std::string AddressBook::addAddress(const Address &newAddress)
 {
     AddressBook m_phonebook;
+    std::string str;
 
     if (size < address_book_size)
     {
         list[size++] = newAddress;
-        std::cout << "주소가 추가되었습니다." << std::endl;
+        str = "주소가 추가되었습니다.\n";
     }
     else
     {
-        std::cout << "주소록이 가득 찼습니다." << std::endl;
+        str = "주소록이 가득 찼습니다.\n";
     }
+    return str;
 }
 
 std::string AddressBook::addAddressBook_Name(const std::string &searchName)
@@ -98,11 +100,11 @@ std::string AddressBook::editAddressBook(const std::string &searchName, const st
     return searchName + "이(가) 주소록에 없습니다.\n\n";
 }
 
-void AddressBook::saveToJson(const std::string &filename)
+std::string AddressBook::saveToJson(const std::string &filename)
 {
     Json::Value root;
     Json::Value addressList(Json::arrayValue);
-
+    std::string str;
     for (int i = 0; i < size; i++)
     {
         Json::Value address;
@@ -120,17 +122,20 @@ void AddressBook::saveToJson(const std::string &filename)
     {
         fileOut << root;
         fileOut.close();
-        std::cout << "주소록이 " << filename << " 파일로 저장되었습니다." << std::endl << std::endl;
+        str = "주소록이 " + filename + " 으로 build 파일에 저장되었습니다.\n\n";
     }
 
     else
     {
-        std::cout << "파일을 열 수 없습니다." << std::endl << std::endl;
+        str = "파일을 열 수 없습니다.\n\n";
     }
+
+    return str;
 }
 
-void AddressBook::loadFromJson(const std::string &filename)
+std::string AddressBook::loadFromJson(const std::string &filename)
 {
+    std::string str;
     std::ifstream fileIn(filename);
     if (fileIn.is_open())
     {
@@ -152,19 +157,34 @@ void AddressBook::loadFromJson(const std::string &filename)
                 std::string sex = address["sex"].asString();
                 std::string number = address["number"].asString();
                 std::string addr = address["address"].asString();
-                list[size++] = Address(name, sex, number, addr);
+
+                if (size < address_book_size)
+                {
+                    list[size++] = Address(name, sex, number, addr);
+
+                    str += "이름: " + name + "\n";
+                    str += "성별: " + sex + "\n";
+                    str += "전화번호: " + number + "\n";
+                    str += "주소: " + addr + "\n";
+                }
+                else
+                {
+                    str += "주소록이 가득 찼습니다. 추가할 수 없습니다: " + name + "\n";
+                }
             }
-            std::cout << "주소록이 " << filename << " 파일에서 로드되었습니다." << std::endl << std::endl;
+
+            str = "주소록이 " + filename + " 파일에서 로드되었습니다.\n\n" + str;
         }
         else
         {
-            std::cout << "JSON 파일을 파싱할 수 없습니다." << std::endl << std::endl;
+            str = "JSON 파일을 파싱할 수 없습니다.\n\n";
         }
     }
     else
     {
-        std::cout << "파일이 없거나 JSON 형식이 아닙니다." << std::endl << std::endl;
+        str = "파일이 없거나 JSON 형식이 아닙니다.\n\n";
     }
+    return str;
 }
 
 std::string AddressBook::GetAddressBook()

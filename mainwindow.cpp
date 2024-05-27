@@ -3,7 +3,7 @@
 #include "address_factor.h"
 #include "addressbook_func.h"
 #include "add_newwindow.h"
-#include "fix_newwindow.h"
+#include "edit_newwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Delete_clicked()));
     connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Search_clicked()));
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Save_clicked()));
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Load_clicked()));
 
     Address address1("Son", "M", "010-7777-7777", "1st, London, England");
     Address address2("Ryu", "M", "010-9999-9999", "2st, LA, America");
@@ -46,10 +48,6 @@ void MainWindow::text_AddressAdded()
     ui->textEdit_mainWindow->setText("주소가 추가되었습니다.");
 }
 
-void MainWindow::text_AddressEdited()
-{
-    ui->textEdit_mainWindow->setText("주소가 수정되었습니다.");
-}
 
 void MainWindow::on_pushButton_Delete_clicked()
 {
@@ -64,7 +62,6 @@ void MainWindow::on_pushButton_Delete_clicked()
         std::string str = m_phonebook.DeleteAddressBook(searchName.toStdString());
         ui->textEdit_mainWindow->setText(QString::fromStdString(str));
     }
-    ui->textEdit_mainWindow->clear();
 }
 
 void MainWindow::on_pushButton_Search_clicked()
@@ -80,14 +77,48 @@ void MainWindow::on_pushButton_Search_clicked()
         std::string str = m_phonebook.SearchAddressBook(searchName.toStdString());
         ui->textEdit_mainWindow->setText(QString::fromStdString(str));
     }
-    ui->textEdit_mainWindow->clear();
 }
 
-void MainWindow::on_pushButton_Fix_clicked()
+void MainWindow::on_pushButton_Edit_clicked()
 {
-    Fix_newWindow *fixWindow = new Fix_newWindow(m_phonebook, this);
-    connect(fixWindow, &Fix_newWindow::addressEdited, this, &MainWindow::text_AddressEdited);
-    fixWindow->exec();
+    Edit_newWindow *editWindow = new Edit_newWindow(m_phonebook, this);
+    connect(editWindow, &Edit_newWindow::addressEdited, this, &MainWindow::text_AddressEdited);
+    editWindow->exec();
+}
+
+void MainWindow::text_AddressEdited()
+{
+    ui->textEdit_mainWindow->setText("주소가 수정되었습니다.\n");
+}
+
+void MainWindow::on_pushButton_Save_clicked()
+{
+    QString fileName = ui->lineEdit->text().trimmed();
+
+    if (fileName.isEmpty())
+    {
+        ui->textEdit_mainWindow->setText("<JSON 저장>\n\n 저장하실 Json파일 이름을 .json까지 적고 'save' 버튼을 눌러주세요 \n");
+    }
+    else
+    {
+        std::string str = m_phonebook.saveToJson(fileName.toStdString());
+        ui->textEdit_mainWindow->setText(QString::fromStdString(str));
+    }
+}
+
+void MainWindow::on_pushButton_Load_clicked()
+{
+    QString fileName = ui->lineEdit->text().trimmed();
+
+    if (fileName.isEmpty())
+    {
+        ui->textEdit_mainWindow->setText("<JSON 저장>\n\n 불러오실 Json파일 이름을 .json까지 적고 'load' 버튼을 눌러주세요 \n");
+    }
+    else
+    {
+        std::string str = m_phonebook.loadFromJson(fileName.toStdString());
+        ui->textEdit_mainWindow->setText(QString::fromStdString(str));
+    }
 }
 
 void MainWindow::on_pushButton_show_clicked()

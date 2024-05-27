@@ -18,15 +18,18 @@ public:
 
 private slots:
     void on_lineEdit_textEdited(const QString &arg1);
-    void on_pushButton_Add_clicked();
-    void text_AddressAdded();
-    void text_AddressEdited();
+    void on_pushButton_Add_clicked();    
     void on_pushButton_Delete_clicked();
-    void on_pushButton_Search_clicked();
-    void on_pushButton_Fix_clicked();
+    void on_pushButton_Search_clicked();    
+    void on_pushButton_Edit_clicked();
+    void on_pushButton_Save_clicked();
+    void on_pushButton_Load_clicked();
     void on_pushButton_show_clicked();
     void on_pushButton_CleanUp_clicked();
-
+    
+    void text_AddressAdded();
+    void text_AddressEdited();
+    
 private:
     Ui::MainWindow *ui;
     AddressBook m_phonebook;
