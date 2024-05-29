@@ -26,6 +26,9 @@ private slots:
     void on_pushButton_Load_clicked();
     void on_pushButton_show_clicked();
     void on_pushButton_CleanUp_clicked();
+    void disconnection();
+    
+    
     
     void text_AddressAdded();
     void text_AddressEdited();

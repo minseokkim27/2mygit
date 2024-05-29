@@ -1,0 +1,35 @@
+{
+	"address book" : 
+	[
+		{
+			"address" : "1st, London, England",
+			"name" : "Son",
+			"number" : "010-7777-7777",
+			"sex" : "M"
+		},
+		{
+			"address" : "2st, LA, America",
+			"name" : "Ryu",
+			"number" : "010-9999-9999",
+			"sex" : "M"
+		},
+		{
+			"address" : "3st, Sao Paulo, Brazil",
+			"name" : "Amanda",
+			"number" : "010-1588-1588",
+			"sex" : "W"
+		},
+		{
+			"address" : "4st, Barcellona, Spain",
+			"name" : "Messi",
+			"number" : "010-1010-1010",
+			"sex" : "M"
+		},
+		{
+			"address" : "5st, Incheon, Korea",
+			"name" : "Kim",
+			"number" : "010-2929-2929",
+			"sex" : "M"
+		}
+	]
+}

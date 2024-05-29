@@ -10,10 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Delete_clicked()));
-    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Search_clicked()));
-    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Save_clicked()));
-    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Load_clicked()));
 
     Address address1("Son", "M", "010-7777-7777", "1st, London, England");
     Address address2("Ryu", "M", "010-9999-9999", "2st, LA, America");
@@ -34,10 +30,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_lineEdit_textEdited(const QString &arg1)
 {
+
 }
 
 void MainWindow::on_pushButton_Add_clicked()
 {
+    disconnection();
     Add_newWindow *addWindow = new Add_newWindow(m_phonebook, this);
     connect(addWindow, &Add_newWindow::addressAdded, this, &MainWindow::text_AddressAdded);
     addWindow->exec();
@@ -48,11 +46,12 @@ void MainWindow::text_AddressAdded()
     ui->textEdit_mainWindow->setText("주소가 추가되었습니다.");
 }
 
-
 void MainWindow::on_pushButton_Delete_clicked()
 {
+    disconnection();
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Delete_clicked()));
+    //ui->lineEdit->setText("");
     QString searchName = ui->lineEdit->text().trimmed();
-
     if (searchName.isEmpty())
     {
         ui->textEdit_mainWindow->setText("<주소록 삭제>\n\n 삭제하실 주소록 이름을 적고 'Delete'를 눌러주세요 \n");
@@ -62,12 +61,15 @@ void MainWindow::on_pushButton_Delete_clicked()
         std::string str = m_phonebook.DeleteAddressBook(searchName.toStdString());
         ui->textEdit_mainWindow->setText(QString::fromStdString(str));
     }
+    ui->lineEdit->setText("");
 }
 
 void MainWindow::on_pushButton_Search_clicked()
 {
-    QString searchName = ui->lineEdit->text().trimmed();
+    disconnection();
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Search_clicked()));
 
+    QString searchName = ui->lineEdit->text().trimmed();
     if (searchName.isEmpty())
     {
         ui->textEdit_mainWindow->setText("<주소록 검색>\n\n 검색하실 주소록 이름을 적고 'Enter'를 눌러주세요 \n");
@@ -77,10 +79,12 @@ void MainWindow::on_pushButton_Search_clicked()
         std::string str = m_phonebook.SearchAddressBook(searchName.toStdString());
         ui->textEdit_mainWindow->setText(QString::fromStdString(str));
     }
+    ui->lineEdit->setText("");
 }
 
 void MainWindow::on_pushButton_Edit_clicked()
 {
+    disconnection();
     Edit_newWindow *editWindow = new Edit_newWindow(m_phonebook, this);
     connect(editWindow, &Edit_newWindow::addressEdited, this, &MainWindow::text_AddressEdited);
     editWindow->exec();
@@ -93,8 +97,10 @@ void MainWindow::text_AddressEdited()
 
 void MainWindow::on_pushButton_Save_clicked()
 {
-    QString fileName = ui->lineEdit->text().trimmed();
+    disconnection();
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Save_clicked()));
 
+    QString fileName = ui->lineEdit->text().trimmed();
     if (fileName.isEmpty())
     {
         ui->textEdit_mainWindow->setText("<JSON 저장>\n\n 저장하실 Json파일 이름을 .json까지 적고 'save' 버튼을 눌러주세요 \n");
@@ -104,12 +110,15 @@ void MainWindow::on_pushButton_Save_clicked()
         std::string str = m_phonebook.saveToJson(fileName.toStdString());
         ui->textEdit_mainWindow->setText(QString::fromStdString(str));
     }
+    ui->lineEdit->setText("");
 }
 
 void MainWindow::on_pushButton_Load_clicked()
 {
-    QString fileName = ui->lineEdit->text().trimmed();
+    disconnection();
+    connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Load_clicked()));
 
+    QString fileName = ui->lineEdit->text().trimmed();
     if (fileName.isEmpty())
     {
         ui->textEdit_mainWindow->setText("<JSON 저장>\n\n 불러오실 Json파일 이름을 .json까지 적고 'load' 버튼을 눌러주세요 \n");
@@ -119,14 +128,25 @@ void MainWindow::on_pushButton_Load_clicked()
         std::string str = m_phonebook.loadFromJson(fileName.toStdString());
         ui->textEdit_mainWindow->setText(QString::fromStdString(str));
     }
+    ui->lineEdit->setText("");
 }
 
 void MainWindow::on_pushButton_show_clicked()
 {
+    disconnection();
     ui->textEdit_mainWindow->setText(m_phonebook.GetAddressBook().data());
 }
 
 void MainWindow::on_pushButton_CleanUp_clicked()
 {
+    disconnection();
     ui->textEdit_mainWindow->setText("");
+}
+
+void MainWindow::disconnection()
+{
+    disconnect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Delete_clicked()));
+    disconnect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Search_clicked()));
+    disconnect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Save_clicked()));
+    disconnect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Load_clicked()));
 }

@@ -2,12 +2,21 @@
 #define ADDRESSBOOK_FUNC_H
 
 #include "address_factor.h"
+#include <list>
+#include <vector>
+#include <map>
+
+
 
 const int address_book_size = 10;
 
 class AddressBook {
 private:
     Address list[address_book_size];
+    // std::vector<Address> m_vecAddress;
+    // std::map<std::string, Address> m_vecAddress;
+    // std::list<Address> m_listAddress;
+    
     int size;
 
 public:

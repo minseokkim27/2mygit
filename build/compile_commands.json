@@ -1,0 +1,42 @@
+[
+{
+  "directory": "/home/mt-minseok-pc-ubuntu/QT_address/build",
+  "command": "/usr/bin/g++ -DQT_address_lib_EXPORTS -I/home/mt-minseok-pc-ubuntu/QT_address/build -I/home/mt-minseok-pc-ubuntu/QT_address -I/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_lib_autogen/include -I/usr/include/jsoncpp -I/home/mt-minseok-pc-ubuntu/QT_address/QT_address_lib -I/home/mt-minseok-pc-ubuntu/QT_address/PUBLIC -g -fPIC -std=gnu++11 -o CMakeFiles/QT_address_lib.dir/QT_address_lib_autogen/mocs_compilation.cpp.o -c /home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_lib_autogen/mocs_compilation.cpp",
+  "file": "/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_lib_autogen/mocs_compilation.cpp"
+},
+{
+  "directory": "/home/mt-minseok-pc-ubuntu/QT_address/build",
+  "command": "/usr/bin/g++ -DQT_address_lib_EXPORTS -I/home/mt-minseok-pc-ubuntu/QT_address/build -I/home/mt-minseok-pc-ubuntu/QT_address -I/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_lib_autogen/include -I/usr/include/jsoncpp -I/home/mt-minseok-pc-ubuntu/QT_address/QT_address_lib -I/home/mt-minseok-pc-ubuntu/QT_address/PUBLIC -g -fPIC -std=gnu++11 -o CMakeFiles/QT_address_lib.dir/address_factor.cpp.o -c /home/mt-minseok-pc-ubuntu/QT_address/address_factor.cpp",
+  "file": "/home/mt-minseok-pc-ubuntu/QT_address/address_factor.cpp"
+},
+{
+  "directory": "/home/mt-minseok-pc-ubuntu/QT_address/build",
+  "command": "/usr/bin/g++ -DQT_address_lib_EXPORTS -I/home/mt-minseok-pc-ubuntu/QT_address/build -I/home/mt-minseok-pc-ubuntu/QT_address -I/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_lib_autogen/include -I/usr/include/jsoncpp -I/home/mt-minseok-pc-ubuntu/QT_address/QT_address_lib -I/home/mt-minseok-pc-ubuntu/QT_address/PUBLIC -g -fPIC -std=gnu++11 -o CMakeFiles/QT_address_lib.dir/addressbook_func.cpp.o -c /home/mt-minseok-pc-ubuntu/QT_address/addressbook_func.cpp",
+  "file": "/home/mt-minseok-pc-ubuntu/QT_address/addressbook_func.cpp"
+},
+{
+  "directory": "/home/mt-minseok-pc-ubuntu/QT_address/build",
+  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/mt-minseok-pc-ubuntu/QT_address/build -I/home/mt-minseok-pc-ubuntu/QT_address -I/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_autogen/include -I/home/mt-minseok-pc-ubuntu/QT_address/QT_address_lib -I/home/mt-minseok-pc-ubuntu/QT_address/PUBLIC -I/usr/include/jsoncpp -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -g -fPIC -std=gnu++11 -o CMakeFiles/QT_address.dir/QT_address_autogen/mocs_compilation.cpp.o -c /home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_autogen/mocs_compilation.cpp",
+  "file": "/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_autogen/mocs_compilation.cpp"
+},
+{
+  "directory": "/home/mt-minseok-pc-ubuntu/QT_address/build",
+  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/mt-minseok-pc-ubuntu/QT_address/build -I/home/mt-minseok-pc-ubuntu/QT_address -I/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_autogen/include -I/home/mt-minseok-pc-ubuntu/QT_address/QT_address_lib -I/home/mt-minseok-pc-ubuntu/QT_address/PUBLIC -I/usr/include/jsoncpp -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -g -fPIC -std=gnu++11 -o CMakeFiles/QT_address.dir/main.cpp.o -c /home/mt-minseok-pc-ubuntu/QT_address/main.cpp",
+  "file": "/home/mt-minseok-pc-ubuntu/QT_address/main.cpp"
+},
+{
+  "directory": "/home/mt-minseok-pc-ubuntu/QT_address/build",
+  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/mt-minseok-pc-ubuntu/QT_address/build -I/home/mt-minseok-pc-ubuntu/QT_address -I/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_autogen/include -I/home/mt-minseok-pc-ubuntu/QT_address/QT_address_lib -I/home/mt-minseok-pc-ubuntu/QT_address/PUBLIC -I/usr/include/jsoncpp -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -g -fPIC -std=gnu++11 -o CMakeFiles/QT_address.dir/mainwindow.cpp.o -c /home/mt-minseok-pc-ubuntu/QT_address/mainwindow.cpp",
+  "file": "/home/mt-minseok-pc-ubuntu/QT_address/mainwindow.cpp"
+},
+{
+  "directory": "/home/mt-minseok-pc-ubuntu/QT_address/build",
+  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/mt-minseok-pc-ubuntu/QT_address/build -I/home/mt-minseok-pc-ubuntu/QT_address -I/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_autogen/include -I/home/mt-minseok-pc-ubuntu/QT_address/QT_address_lib -I/home/mt-minseok-pc-ubuntu/QT_address/PUBLIC -I/usr/include/jsoncpp -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -g -fPIC -std=gnu++11 -o CMakeFiles/QT_address.dir/add_newwindow.cpp.o -c /home/mt-minseok-pc-ubuntu/QT_address/add_newwindow.cpp",
+  "file": "/home/mt-minseok-pc-ubuntu/QT_address/add_newwindow.cpp"
+},
+{
+  "directory": "/home/mt-minseok-pc-ubuntu/QT_address/build",
+  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/mt-minseok-pc-ubuntu/QT_address/build -I/home/mt-minseok-pc-ubuntu/QT_address -I/home/mt-minseok-pc-ubuntu/QT_address/build/QT_address_autogen/include -I/home/mt-minseok-pc-ubuntu/QT_address/QT_address_lib -I/home/mt-minseok-pc-ubuntu/QT_address/PUBLIC -I/usr/include/jsoncpp -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -g -fPIC -std=gnu++11 -o CMakeFiles/QT_address.dir/edit_newwindow.cpp.o -c /home/mt-minseok-pc-ubuntu/QT_address/edit_newwindow.cpp",
+  "file": "/home/mt-minseok-pc-ubuntu/QT_address/edit_newwindow.cpp"
+}
+]

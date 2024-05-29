@@ -22,14 +22,6 @@ std::string AddressBook::addAddress(const Address &newAddress)
     return str;
 }
 
-std::string AddressBook::addAddressBook_Name(const std::string &searchName)
-{
-    Address address;
-    address.setName(searchName);
-    
-    return "추가된 이름: " + searchName;
-}
-
 std::string AddressBook::DeleteAddressBook(const std::string &searchName)
 {
     bool found = false;
@@ -46,6 +38,7 @@ std::string AddressBook::DeleteAddressBook(const std::string &searchName)
             size--;
             str = searchName + "을(를) 삭제했습니다.\n\n";
             found = true;
+            break;
         }
     }
 
@@ -101,7 +94,7 @@ std::string AddressBook::editAddressBook(const std::string &searchName, const st
 }
 
 std::string AddressBook::saveToJson(const std::string &filename)
-{
+{   //json 순서 배열
     Json::Value root;
     Json::Value addressList(Json::arrayValue);
     std::string str;
@@ -172,7 +165,6 @@ std::string AddressBook::loadFromJson(const std::string &filename)
                     str += "주소록이 가득 찼습니다. 추가할 수 없습니다: " + name + "\n";
                 }
             }
-
             str = "주소록이 " + filename + " 파일에서 로드되었습니다.\n\n" + str;
         }
         else
