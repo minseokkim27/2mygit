@@ -9,7 +9,7 @@ Edit_newWindow::Edit_newWindow(AddressBook &phonebook, QWidget *parent) :
     ui->setupUi(this);
     connect(ui->lineEdit_SearchName, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Enter_clicked()));
     connect(ui->lineEdit_Address, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Edit_clicked()));
-    ui->lineEdit->setText("수정을 원하는 사람의 이름을 최하단에 입력해주세요.");
+    ui->lineEdit_Info->setText("수정을 원하는 사람의 이름을 최하단에 입력해주세요.");
 }
 
 Edit_newWindow::~Edit_newWindow()
@@ -32,26 +32,24 @@ void Edit_newWindow::on_pushButton_Edit_clicked()
 
 void Edit_newWindow::on_pushButton_Enter_clicked()
 {
+    
     QString searchName = ui->lineEdit_SearchName->text().trimmed();
+    inputName = searchName;
     std::string name, sex, number, address;
     std::string str = m_phonebook.SearchAddressBook(searchName.toStdString());
     
     if (str.find("주소록에 없습니다.") == std::string::npos)
     {
-        ui->lineEdit_Name->setText(QString::fromStdString(name));
-        ui->lineEdit_Sex->setText(QString::fromStdString(sex));
-        ui->lineEdit_Num->setText(QString::fromStdString(number));
-        ui->lineEdit_Address->setText(QString::fromStdString(address));
-        inputName = searchName;
-        ui->lineEdit->setText("수정할 내용을 기입해주세요.");
+        ui->lineEdit_Info->setText("수정할 내용을 기입해주세요.");
     } 
     else
     {
-        ui->lineEdit_Name->clear();
-        ui->lineEdit_Sex->clear();
-        ui->lineEdit_Num->clear();
-        ui->lineEdit_Address->clear();
-        inputName.clear();
+        ui->lineEdit_Info->setText("검색하신 이름이 주소록에 없습니다.");
+        ui->lineEdit_Name->setText("");
+        ui->lineEdit_Sex->setText("");
+        ui->lineEdit_Num->setText("");
+        ui->lineEdit_Address->setText("");
+        ui->lineEdit_SearchName->setText("");
     }
 }
 

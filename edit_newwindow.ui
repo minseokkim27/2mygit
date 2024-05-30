@@ -17,7 +17,7 @@
    <item>
     <layout class="QGridLayout" name="gridLayout">
      <item row="1" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="label_Info">
        <property name="text">
         <string>INFO</string>
        </property>
@@ -92,7 +92,7 @@ Name</string>
       </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lineEdit_Info"/>
      </item>
      <item row="6" column="2">
       <widget class="QLineEdit" name="lineEdit_Address"/>

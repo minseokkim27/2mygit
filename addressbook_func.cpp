@@ -18,7 +18,6 @@ bool AddressBook::addAddress(const Address &newAddress)
     return true;
 }
 
-
 std::string AddressBook::DeleteAddressBook(const std::string &searchName)
 {
     for (auto itr = vct.begin(); itr != vct.end(); itr++)
@@ -68,9 +67,8 @@ std::string AddressBook::editAddressBook(const std::string &searchName, const st
 
 std::string AddressBook::saveToJson(const std::string &filename)
 {   //json 순서 배열
-   Json::Value root;
+    Json::Value root;
     Json::Value addressList(Json::arrayValue);
-    std::string str;
 
     for (const auto &address : vct)
     {
@@ -89,14 +87,12 @@ std::string AddressBook::saveToJson(const std::string &filename)
     {
         fileOut << root;
         fileOut.close();
-        str = "주소록이 " + filename + " 으로 저장되었습니다.\n\n";
+        return "주소록이 " + filename + " 으로 저장되었습니다.\n\n";
     }
     else
     {
-        str = "파일을 열 수 없습니다.\n\n";
+        return "파일을 열 수 없습니다.\n\n";
     }
-
-    return str;
 }
 
 std::string AddressBook::loadFromJson(const std::string &filename)
@@ -122,7 +118,7 @@ std::string AddressBook::loadFromJson(const std::string &filename)
                 std::string sex = address["sex"].asString();
                 std::string number = address["number"].asString();
                 std::string addr = address["address"].asString();
-
+                
                 vct.emplace_back(name, sex, number, addr);
 
                 str += "이름: " + name + "\n";

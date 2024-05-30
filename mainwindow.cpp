@@ -57,7 +57,6 @@ void MainWindow::on_pushButton_Delete_clicked()
 {
     disconnection();
     connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(on_pushButton_Delete_clicked()));
-    //ui->lineEdit->setText("");
     QString searchName = ui->lineEdit->text().trimmed();
     if (searchName.isEmpty())
     {
