@@ -13,7 +13,7 @@ private:
 public:
     AddressBook();
 
-    std::string addAddress(const Address &newAddress);
+    bool addAddress(const Address &newAddress);
     std::string addAddressBook_Name(const std::string &searchName);
     std::string DeleteAddressBook(const std::string &searchName);
     std::string SearchAddressBook(const std::string& searchName);

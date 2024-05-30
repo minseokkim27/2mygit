@@ -24,7 +24,7 @@ void Edit_newWindow::on_pushButton_Edit_clicked()
     QString newNumber = ui->lineEdit_Num->text().trimmed();
     QString newAddress = ui->lineEdit_Address->text().trimmed();
 
-    std::string str = m_phonebook.editAddressBook(currentSearchName.toStdString(), newName.toStdString(), newSex.toStdString(), newNumber.toStdString(), newAddress.toStdString());
+    std::string str = m_phonebook.editAddressBook(inputName.toStdString(), newName.toStdString(), newSex.toStdString(), newNumber.toStdString(), newAddress.toStdString());
 
     emit addressEdited();
     accept();
@@ -42,7 +42,7 @@ void Edit_newWindow::on_pushButton_Enter_clicked()
         ui->lineEdit_Sex->setText(QString::fromStdString(sex));
         ui->lineEdit_Num->setText(QString::fromStdString(number));
         ui->lineEdit_Address->setText(QString::fromStdString(address));
-        currentSearchName = searchName;
+        inputName = searchName;
         ui->lineEdit->setText("수정할 내용을 기입해주세요.");
     } 
     else
@@ -51,9 +51,8 @@ void Edit_newWindow::on_pushButton_Enter_clicked()
         ui->lineEdit_Sex->clear();
         ui->lineEdit_Num->clear();
         ui->lineEdit_Address->clear();
-        currentSearchName.clear();
+        inputName.clear();
     }
-    
 }
 
 

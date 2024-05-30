@@ -30,7 +30,7 @@ private slots:
     
     
     
-    void text_AddressAdded();
+    void text_AddressAdded(bool nameCheck);
     void text_AddressEdited();
     
 private:

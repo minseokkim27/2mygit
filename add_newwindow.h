@@ -17,7 +17,7 @@ public:
     ~Add_newWindow();
 
 signals:
-    void addressAdded();
+    void addressAdded(bool nameCheck);
 
 private slots:
     void on_pushButton_Address_clicked();

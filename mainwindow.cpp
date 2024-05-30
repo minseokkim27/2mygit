@@ -41,9 +41,16 @@ void MainWindow::on_pushButton_Add_clicked()
     addWindow->exec();
 }
 
-void MainWindow::text_AddressAdded()
+void MainWindow::text_AddressAdded(bool nameCheck)
 {
-    ui->textEdit_mainWindow->setText("주소가 추가되었습니다.");
+    if (nameCheck)
+    {
+        ui->textEdit_mainWindow->setText("주소가 추가되었습니다.");
+    }
+    else
+    {
+        ui->textEdit_mainWindow->setText("이미 같은 이름이 있습니다.");
+    }
 }
 
 void MainWindow::on_pushButton_Delete_clicked()

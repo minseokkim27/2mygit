@@ -26,7 +26,7 @@ private slots:
 private:
     Ui::Edit_newWindow *ui;
     AddressBook& m_phonebook;
-    QString currentSearchName;
+    QString inputName;
 };
 
 #endif // EDIT_NEWWINDOW_H

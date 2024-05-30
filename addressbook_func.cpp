@@ -5,15 +5,23 @@
 
 AddressBook::AddressBook() {}
 
-std::string AddressBook::addAddress(const Address &newAddress)
+bool AddressBook::addAddress(const Address &newAddress)
 {
+    for (auto itr = vct.begin(); itr != vct.end(); itr++)
+    {
+        if (itr->getName() == newAddress.getName())
+        {
+            return false;
+        }
+    }
     vct.push_back(newAddress);
-    return "주소가 추가되었습니다.\n";
+    return true;
 }
+
 
 std::string AddressBook::DeleteAddressBook(const std::string &searchName)
 {
-    for (auto itr = vct.begin(); itr != vct.end(); ++itr)
+    for (auto itr = vct.begin(); itr != vct.end(); itr++)
     {
         if (itr->getName() == searchName)
         {

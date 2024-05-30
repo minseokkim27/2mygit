@@ -24,8 +24,8 @@ void Add_newWindow::on_pushButton_Address_clicked()
     QString address = ui->lineEdit_Address->text().trimmed();
 
     Address newAddress(name.toStdString(), sex.toStdString(), number.toStdString(), address.toStdString());
-    m_addressBook.addAddress(newAddress);
+    bool nameCheck = m_addressBook.addAddress(newAddress);
 
-    emit addressAdded();
+    emit addressAdded(nameCheck);
     accept();
 }
